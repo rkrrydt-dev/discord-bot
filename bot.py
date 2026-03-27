@@ -16,7 +16,11 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive"
 ]
 
-creds = Credentials.from_service_account_file("credentials.json", scopes=SCOPES)
+import os
+import json
+
+creds_dict = json.loads(os.getenv("GOOGLE_CREDS"))
+creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
 client = gspread.authorize(creds)
 sheet = client.open(SHEET_NAME).worksheet("Compta")
 
