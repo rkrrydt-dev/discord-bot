@@ -9,7 +9,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 TOKEN = os.getenv("TOKEN")
-SHEET_NAME = "NomDeTonSheet"
+SHEET_NAME = "Trésorie Red Legion's"
 
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
