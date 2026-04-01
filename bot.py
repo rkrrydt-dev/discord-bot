@@ -58,7 +58,7 @@ def run_web():
 threading.Thread(target=run_web).start()
 
 bot.run(TOKEN)
-from flask import request
+from flask import Flask, request
 
 @app.route("/send", methods=["GET"])
 def send_message():
