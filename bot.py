@@ -58,3 +58,21 @@ def run_web():
 threading.Thread(target=run_web).start()
 
 bot.run(TOKEN)
+from flask import request
+
+@app.route("/send", methods=["GET"])
+def send_message():
+    msg = request.args.get("msg")
+
+    if msg:
+        channel_id = 1454216158717935660
+
+        async def send():
+            channel = bot.get_channel(channel_id)
+            if channel:
+                await channel.send(msg)
+
+        bot.loop.create_task(send())
+        return "Message envoyé"
+
+    return "Erreur"
